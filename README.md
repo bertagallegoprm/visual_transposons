@@ -14,30 +14,36 @@ git clone -b master https://github.com/bertagallegoprm/visual_transposons.git
 
 > Add remote branches if required `git checkout -b branch-name origin/branch-name`
 
-You will need to have installed `pip` and `pipenv` to create the virtual environment (read more about `pipenv` [here](https://pipenv-fork.readthedocs.io/en/latest/)):
+You will need to have installed `pip` and `venv` to create the virtual environment:
 
 - Install pip (if required):
 ```buildoutcfg
 sudo apt install python3-pip
 ```
 
-- Install pipenv (if required):
+- Install venv (if required):
 ```buildoutcfg
-pip3 install --user pipenv
+sudo apt-get install python3-venv
 ```
 
-- To install the packages from `Pipfile`:
+- Activate the virtual environment in the working directory:
+```
+source env/bin/activate
+```
+> (To deactivate the environment: `deactivate`)
+
+- And install the packages from `requirements.txt`:
 
 ```buildoutcfg
-pipenv install
+pip install -r requirements.txt
 ```
 
 ### Run
 
-To run from the terminal, in the file directory:
+To run python files in the environment:
 
 ```
-pipenv run python your-python-file.py 
+python3 your-python-file.py 
 ```
 
 ## Data 
@@ -53,5 +59,5 @@ The date of the last download can be found in `data/last_download.txt`.
 - To run the code and get the data:
 
 ```
-pipenv run python data-request.py 
+python3 get_data.py 
 ```

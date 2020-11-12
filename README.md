@@ -4,7 +4,7 @@
 
 ### Set up the working directory (linux)
 
-I am using `pipenv` to create a virtual environment and manage the dependencies.
+I am using `pip` and `venv` to create a virtual environment and manage the dependencies.
 
 
 - Clone the repo from GitHub: 
@@ -30,7 +30,6 @@ sudo apt-get install python3-venv
 ```
 source env/bin/activate
 ```
-> (To deactivate the environment: `deactivate`)
 
 - And install the packages from `requirements.txt`:
 

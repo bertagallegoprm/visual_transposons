@@ -1,52 +1,49 @@
-DROP DATABASE IF EXISTS atTransposons;
+DROP DATABASE IF EXISTS transposons;
 
-CREATE DATABASE atTransposons 
+CREATE DATABASE transposons 
 CHARACTER SET utf8mb4 
 COLLATE utf8mb4_unicode_ci;
 
-DROP TABLE IF EXISTS position;
-CREATE TABLE position(
-    id PRIMARY KEY AUTO_INCREMENT NOT NULL
-    , minStart INT 
-    , maxEnd INT 
+USE transposons;
+
+CREATE TABLE IF NOT EXISTS location (
+ id INT NOT NULL AUTO_INCREMENT,
+ isFivePrima TINYINT(1),
+ minStart INT,
+ maxEnd INT,
+ PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS orientation;
-CREATE TABLE orientation(
-    id PRIMARY KEY AUTO_INCREMENT NOT NULL
-    , isFivePrima TINYINT(1)
-); 
 
-DROP TABLE IF EXISTS chromosome;
-CREATE TABLE chromosome(
-    id PRIMARY KEY AUTO_INCREMENT NOT NULL
-    , chromosomNumber INT
+CREATE TABLE IF NOT EXISTS chromosome(
+    id INT NOT NULL AUTO_INCREMENT
+    , chromosomeNumber INT
+    , PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS superFamily;
-CREATE TABLE superFamily(
-    id PRIMARY KEY AUTO_INCREMENT NOT NULL
+CREATE TABLE IF NOT EXISTS superFamily(
+    id INT NOT NULL AUTO_INCREMENT
     , superFamilyName VARCHAR(25)
+    , PRIMARY KEY (id)
 );
  
-DROP TABLE IF EXISTS family;
-CREATE TABLE family(
-    id PRIMARY KEY AUTO_INCREMENT NOT NULL
+CREATE TABLE IF NOT EXISTS family(
+    id INT NOT NULL AUTO_INCREMENT
     , familyName VARCHAR(25)
     , idSuperFamily INT
-    FOREIGN KEY fk_family_superfamily (idSuperFamily) REFERENCES superFamily (id)
+    , PRIMARY KEY (id)
+    , FOREIGN KEY fk_family_superfamily (idSuperFamily) REFERENCES superFamily (id)
 ); 
 
-DROP TABLE IF EXISTS transposon;
-CREATE TABLE transposon(
-    id PRIMARY KEY AUTO_INCREMENT NOT NULL
+CREATE TABLE IF NOT EXISTS transposon(
+    id INT NOT NULL AUTO_INCREMENT
     , transposonName VARCHAR(10)
     , idOrientation INT 
-    , idPosition INT 
+    , idLocation INT 
     , idFamily INT 
     , idChromosome INT
-    FOREIGN KEY fk_transposon_orientation (idOrientation) REFERENCES orientation (id)
-    FOREIGN KEY fk_transposon_position (idPosition) REFERENCES position (id)
-    FOREIGN KEY fk_transposon_family (idFamily) REFERENCES family (id)
-    FOREIGN KEY fk_transposon_chromosome (idChromosome) REFERENCES chromosome (id)
+    , PRIMARY KEY (id)
+    , FOREIGN KEY fk_transposon_position (idLocation) REFERENCES location (id)
+    , FOREIGN KEY fk_transposon_family (idFamily) REFERENCES family (id)
+    , FOREIGN KEY fk_transposon_chromosome (idChromosome) REFERENCES chromosome (id)
 );

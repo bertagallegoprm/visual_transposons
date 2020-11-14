@@ -1,24 +1,31 @@
-DROP DATABASE IF EXISTS transposons;
-
-CREATE DATABASE transposons 
+CREATE DATABASE IF NOT EXISTS transposons 
 CHARACTER SET utf8mb4 
 COLLATE utf8mb4_unicode_ci;
 
 USE transposons;
 
-CREATE TABLE IF NOT EXISTS location (
- id INT NOT NULL AUTO_INCREMENT,
- isFivePrima TINYINT(1),
- minStart INT,
- maxEnd INT,
- PRIMARY KEY (id)
-);
-
-
 CREATE TABLE IF NOT EXISTS chromosome(
     id INT NOT NULL AUTO_INCREMENT
     , chromosomeNumber INT
     , PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS location (
+    id INT NOT NULL AUTO_INCREMENT
+    , minStart INT
+    , maxEnd INT
+    , idOrientation INT
+    , idChromosome INT
+    , PRIMARY KEY (id)
+    , FOREIGN KEY fk_location_orientation (idOrientation) REFERENCES orientation (id)
+    , FOREIGN KEY fk_location_chromosome (idChromosome) REFERENCES chromosome (id)
+
+);
+
+CREATE TABLE orientation(
+    id INT NOT NULL AUTO_INCREMENT
+    ,isFivePrima TINYINT(1)
+    ,PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS superFamily(
@@ -43,7 +50,6 @@ CREATE TABLE IF NOT EXISTS transposon(
     , idFamily INT 
     , idChromosome INT
     , PRIMARY KEY (id)
-    , FOREIGN KEY fk_transposon_position (idLocation) REFERENCES location (id)
+    , FOREIGN KEY fk_transposon_location (idLocation) REFERENCES location (id)
     , FOREIGN KEY fk_transposon_family (idFamily) REFERENCES family (id)
-    , FOREIGN KEY fk_transposon_chromosome (idChromosome) REFERENCES chromosome (id)
 );

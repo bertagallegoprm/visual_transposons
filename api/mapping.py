@@ -65,4 +65,6 @@ query5 = session.query(Family.name).count()
 print("family:", query5)
 query6 = session.query(SuperFamily.name).count()
 print("superFamily: ", query6)
+query7 = engine.execute("SELECT COUNT(*) FROM transposon").first()[0]
+print(query7)
 

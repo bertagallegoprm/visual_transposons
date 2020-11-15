@@ -1,6 +1,6 @@
 # Visual transposons
 
-This is a WIP for a web dashboard to show A. thaliana transposable elements metadata.
+This is a WIP for a web dashboard to show _A. thaliana_ transposable elements metadata.
 
 ## Set up the working directory (Linux)
 

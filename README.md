@@ -1,8 +1,8 @@
 # Visual transposons
 
-## Getting started
+This is a WIP for a web dashboard to show A. thaliana transposable elements metadata.
 
-### Set up the working directory (linux)
+## Set up the working directory (Linux)
 
 I am using `pip` and `venv` to create a virtual environment and manage the dependencies.
 
@@ -42,7 +42,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-### Run
+## Run
 
 To run python files in the environment:
 
@@ -50,18 +50,4 @@ To run python files in the environment:
 python3 your-python-file.py 
 ```
 
-## Data 
-
-The data is available at the [Arabidopsis Information Resource (TAIR) website](https://www.arabidopsis.org/download/index-auto.jsp?dir=%2Fdownload_files%2FGenes%2FTAIR10_genome_release%2FTAIR10_transposable_elements), where it appears the date of the last release. 
-
-There are two types of data:
-- `data/te_attributes.txt`. Names and attributes (family and subfamily, orientation, location in the genome).
-- `data/te_sequences.txt`. Sequences.
-
-The date of the last download can be found in `data/last_download.txt`.
-
-- To run the code and get the data:
-
-```
-python3 get_data.py 
-```
+See `data` for specific instructions on how to download the data and load it into a custom database.

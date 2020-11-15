@@ -10,6 +10,13 @@ CREATE TABLE IF NOT EXISTS chromosome(
     , PRIMARY KEY (id)
 );
 
+
+CREATE TABLE orientation(
+    id INT NOT NULL AUTO_INCREMENT
+    ,isFivePrima VARCHAR(5)
+    ,PRIMARY KEY (id)
+);
+
 CREATE TABLE IF NOT EXISTS location (
     id INT NOT NULL AUTO_INCREMENT
     , minStart INT
@@ -22,11 +29,6 @@ CREATE TABLE IF NOT EXISTS location (
 
 );
 
-CREATE TABLE orientation(
-    id INT NOT NULL AUTO_INCREMENT
-    ,isFivePrima TINYINT(1)
-    ,PRIMARY KEY (id)
-);
 
 CREATE TABLE IF NOT EXISTS superFamily(
     id INT NOT NULL AUTO_INCREMENT

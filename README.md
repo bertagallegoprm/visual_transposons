@@ -30,6 +30,10 @@ sudo apt install python3-pip
 ```buildoutcfg
 sudo apt-get install python3-venv
 ```
+- Create the environment
+```
+python3 -m venv env
+```
 
 - Activate the virtual environment in the working directory:
 ```

@@ -8,10 +8,15 @@ I am using `pip` and `venv` to create a virtual environment and manage the depen
 
 
 - Clone the repo from GitHub: 
+
+Using HTTPS:
 ```buildoutcfg
 git clone -b master https://github.com/bertagallegoprm/visual_transposons.git
 ```
-
+Or SSH:
+```
+git clone -b master git@github.com/bertagallegoprm/visual_transposons.git
+```
 > Add remote branches if required `git checkout -b branch-name origin/branch-name`
 
 You will need to have installed `pip` and `venv` to create the virtual environment:

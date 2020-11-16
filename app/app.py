@@ -1,12 +1,12 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from model import session, Transposon
 
 app = Flask(__name__)
 
 
 @app.route("/")
-def index():
-    return "Hey there"
+def home():
+    return render_template("home.html")
 
 @app.route("/transposon/count", methods=["GET"])
 def get_transposon_count():

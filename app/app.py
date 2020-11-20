@@ -1,8 +1,7 @@
 from flask import Flask, jsonify, render_template
 from model import session, Transposon
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder="static")
 
 @app.route("/")
 def home():

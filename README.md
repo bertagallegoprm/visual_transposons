@@ -15,7 +15,7 @@ git clone -b master https://github.com/bertagallegoprm/visual_transposons.git
 ```
 Or SSH:
 ```
-git clone -b master git@github.com/bertagallegoprm/visual_transposons.git
+git clone -b master git@github.com:bertagallegoprm/visual_transposons.git
 ```
 > Add remote branches if required `git checkout -b branch-name origin/branch-name`
 

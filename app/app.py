@@ -9,7 +9,9 @@ def home():
 
 @app.route("/transposon/count", methods=["GET"])
 def get_transposon_count():
-    return jsonify(session.query(Transposon.name).count())
+    # count = jsonify(session.query(Transposon.name).count())
+    count = session.query(Transposon.name).count()
+    return render_template("test.html", count=count)
 
 if __name__ == "__main__":
     app.run(debug=True)
